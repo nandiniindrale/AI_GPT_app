@@ -34,9 +34,8 @@ const PORT = process.env.PORT || 8080;
 //API routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/openai", require("./routes/openaiRoutes"));
-
 //listen server
-app.listen(PORT, () => {
+app.listen(5000, () => {
   console.log(
     `Server Running in ${process.env.DEV_MODE} mode on port no ${PORT}`.bgCyan
       .white

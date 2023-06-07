@@ -67,12 +67,14 @@ userSchema.methods.matchPassword = async function (password) {
 userSchema.methods.getSignedToken = function (res) {
   const accessToken = JWT.sign(
     { id: this._id },
-    process.env.JWT_ACCESS_SECRET,
-    { expiresIn: process.env.JWT_ACCESS_EXPIEREIN}
+    `${process.env.JWT_ACCESS_SECRET}`,
+     { expiresIn: process.env.JWT_ACCESS_EXPIEREIN }
   );
+
+
   const refreshToken = JWT.sign(
     { id: this._id },
-    process.env.JWT_REFRESH_TOKEN,
+    `${process.env.JWT_REFRESH_TOKEN}`,
     { expiresIn: process.env.JWT_ACCESS_EXPIEREIN }
   );
   res.cookie("refreshToken", refreshToken, {
